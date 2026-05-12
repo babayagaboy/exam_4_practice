@@ -43,7 +43,6 @@ int picoshell(char **cmds[])
 			execvp(cmds[i][0], cmds[i]);
 			exit(1);
 		}
-		i++;
 		if (last_fd != -1)
 			close(last_fd);
 		if (cmds[i + 1])
@@ -51,25 +50,21 @@ int picoshell(char **cmds[])
 			close(fd[1]);
 			last_fd = fd[0];
 		}
+		i++;
 	}
 	while (wait(NULL) > 0)
-	{
 		;
-	}
 	return (0);
 }
 
 int	main(void)
 {
-	char *cmd1[] = {"echo", "hello", NULL};
-	char *cmd2[] = {"cat", "picoshell.c", NULL};
-	char *cmd3[] = {"cat", "-e", NULL};
-
+	char *cmd1[] = {"cat", "picoshell.c", NULL};
+	char *cmd2[] = {"cat", "-e", NULL};
 
 	char **cmds[] = {
 		cmd1,
 		cmd2,
-		cmd3,
 		NULL
 	};
 
