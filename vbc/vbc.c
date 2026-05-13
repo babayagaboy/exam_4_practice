@@ -69,8 +69,6 @@ int	check_input(char *str)
 			return (unexpected(str[i]), -1);
 		if (isdigit(str[i]) && isdigit(str[i + 1]))
 			return (unexpected(str[i + 1]), -1);
-		if (isdigit(str[i]) && isdigit(str[i + 1]))
-			return (unexpected(str[i + 1]), -1);
 		last = str[i];
 		i++;
 	}
